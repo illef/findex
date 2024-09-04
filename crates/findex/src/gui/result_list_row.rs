@@ -8,7 +8,10 @@ use gtk::gdk_pixbuf::{Colorspace, Pixbuf};
 use gtk::gio::{AppLaunchContext, DesktopAppInfo};
 use gtk::pango::EllipsizeMode;
 use gtk::prelude::*;
-use gtk::{Align, IconLookupFlags, IconTheme, Image, Justification, Label, ListBox, ListBoxRow, MessageType, Orientation};
+use gtk::{
+    Align, IconLookupFlags, IconTheme, Image, Justification, Label, ListBox, ListBoxRow,
+    MessageType, Orientation,
+};
 use shlex::split;
 use std::process::Command;
 
@@ -48,6 +51,7 @@ pub fn result_list_row(
             .label(&format!("Ctrl+{trigger_idx}"))
             .xalign(1f32)
             .expand(true)
+            .wrap(true)
             .build();
         keyboard_shortcut_label
             .style_context()
