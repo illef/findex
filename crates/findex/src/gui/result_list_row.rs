@@ -26,11 +26,19 @@ pub fn result_list_row(
     box1.style_context()
         .add_class("findex-result-icon-container");
 
-    let app_icon = Image::builder()
-        .pixbuf(&get_icon(app_icon))
-        .parent(&box1)
-        .build();
-    app_icon.style_context().add_class("findex-result-icon");
+    if let Some(emoji) = app_icon.strip_prefix("emoji:") {
+        let icon = Label::builder()
+            .label(emoji)
+            .parent(&box1)
+            .build();
+        icon.style_context().add_class("findex-result-icon");
+    } else {
+        let icon = Image::builder()
+            .pixbuf(&get_icon(app_icon))
+            .parent(&box1)
+            .build();
+        icon.style_context().add_class("findex-result-icon");
+    }
 
     let box2 = GtkBox::builder()
         .orientation(Orientation::Vertical)
