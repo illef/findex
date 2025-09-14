@@ -232,7 +232,7 @@ impl GUI {
 
         window.move_(
             ((screen_width * 0.5 - (window.allocation().width() / 2) as f32) + screen_x) as i32,
-            ((screen_height * 0.3) + screen_y) as i32,
+            ((screen_height * 0.15) + screen_y) as i32,
         );
     }
 
